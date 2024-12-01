@@ -1,7 +1,7 @@
 # Advent of Code 2024
 
 ![License](https://img.shields.io/github/license/underscoretud/advent-of-code)
-![Last Commit](https://img.shields.io/github/last-commit/underscoretud/advent-of-code)
+![Last Commit](https://img.shields.io/github/last-commit/burbulinis/advent-of-code)
 
 This is my participation in the [Advent of Code](https://adventofcode.com)
 
