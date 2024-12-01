@@ -1,4 +1,4 @@
-package me.tud.adventofcode;
+package me.burb.adventofcode;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

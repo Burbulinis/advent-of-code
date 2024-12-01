@@ -2,7 +2,7 @@ plugins {
     id("java")
 }
 
-group = "me.tud"
+group = "me.burb"
 version = "1.0-SNAPSHOT"
 
 repositories {

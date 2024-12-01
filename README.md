@@ -41,4 +41,4 @@ Enjoy the Advent season!
 
 ## Implementation details
 The code is written in Java without the use of any external libraries.
-All solutions can be found under the `me.tud.adventofcode.solutions` package
+All solutions can be found under the `me.burb.adventofcode.solutions` package

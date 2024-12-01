@@ -1,4 +1,4 @@
-package me.tud.adventofcode;
+package me.burb.adventofcode;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,7 +13,7 @@ import java.util.function.Supplier;
 
 public class Main {
 
-    public static final String SOLUTION_LOCATION = "me.tud.adventofcode.solutions.year%s.Day%sSolution";
+    public static final String SOLUTION_LOCATION = "me.burb.adventofcode.solutions.year%s.Day%sSolution";
     public static final String SOLUTION_INPUT_LOCATION = "inputs/year%s/day%s.txt";
 
     private static final Supplier<int[]> ALL_DAYS = () -> {
@@ -152,7 +152,7 @@ public class Main {
         String formattedInput = input.toLowerCase(Locale.ENGLISH);
         if (input.equals("all")) {
             try {
-                return ClassUtils.getSubpackages("me.tud.adventofcode.solutions").stream()
+                return ClassUtils.getSubpackages("me.burb.adventofcode.solutions").stream()
                         .map(pkg -> pkg.substring(pkg.length() - 4))
                         .mapToInt(Integer::parseInt)
                         .toArray();
@@ -172,6 +172,8 @@ public class Main {
 
     private static int[] parseDays(String input) {
         String formattedInput = input.toLowerCase(Locale.ENGLISH);
+        if (input.equals("current"))
+            return new int[]{Calendar.getInstance().get(Calendar.DAY_OF_MONTH)};
         if (input.equals("all"))
             return ALL_DAYS.get();
         int[] days = parseInts(input, () -> {

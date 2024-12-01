@@ -1,4 +1,4 @@
-package me.tud.adventofcode;
+package me.burb.adventofcode;
 
 import java.io.File;
 import java.io.IOException;
