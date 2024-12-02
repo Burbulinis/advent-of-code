@@ -29,30 +29,29 @@ public class Day2Solution extends Solution {
     }
 
     private boolean isValidPartOne(int[] row) {
-        return isRowSafe(row, false);
+        return isRowSafe(row);
     }
 
     private boolean isValidPartTwo(int[] row) {
-        return isRowSafe(row, true);
+        return isRowSafe(row) || canDampen(row);
     }
 
-    private boolean isRowSafe(int[] row, boolean useDampener) {
+    private boolean isRowSafe(int[] row) {
         boolean isIncreasing = row[0] < row[1];
 
-        int problemDampener = 0;
-
         for (int i = 0; i < row.length-1; i++) {
-            int current = row[i];
-            int next = row[i+1];
-
-            if (!isSafe(current, next, isIncreasing)) {
-                if (!useDampener) return false;
-                
-                problemDampener++;
-                if (problemDampener > 1) return false;
-            }
+            if (!isSafe(row[i], row[i+1], isIncreasing))
+                return false;
         }
         return true;
+    }
+
+    private boolean canDampen(int[] row) {
+        for (int i = 0; i < row.length; i++) {
+            int[] copy = remove(row, i);
+            if (isRowSafe(copy)) return true;
+        }
+        return false;
     }
 
     private boolean isSafe(int a, int b, boolean increasing) {
@@ -62,6 +61,20 @@ public class Day2Solution extends Solution {
 
         int diff = Math.abs(a - b);
         return diff <= 3 && diff >= 1;
+    }
+
+    public static int[] remove(int[] arr, int index) {
+        if (arr == null || index < 0 || index >= arr.length) {
+            return arr;
+        }
+
+        int[] result = new int[arr.length - 1];
+        for (int i = 0, j = 0; i < arr.length; i++) {
+            if (i != index) {
+                result[j++] = arr[i];
+            }
+        }
+        return result;
     }
 
 }
