@@ -4,27 +4,27 @@ import me.burb.adventofcode.AdventOfCodeSolution;
 import me.burb.adventofcode.Solution;
 
 import java.util.Arrays;
+import java.util.function.Predicate;
 
 @AdventOfCodeSolution(year = 2024, day = 2, name = "Red-Nosed Reports", link = "https://adventofcode.com/2024/day/2")
 public class Day2Solution extends Solution {
 
     @Override
     public Object part1Solution() {
-        return Arrays.stream(getInputLines())
-                .map(a -> Arrays.stream(a.split(" "))
-                        .mapToInt(Integer::parseInt)
-                        .toArray())
-                .filter(this::isValidPartOne)
-                .count();
+        return countSafeReports(this::isValidPartOne);
     }
 
     @Override
     public Object part2Solution() {
-        return Arrays.stream(getInputLines())
-                .map(a -> Arrays.stream(a.split(" "))
+        return countSafeReports(this::isValidPartTwo);
+    }
+
+    private int countSafeReports(Predicate<int[]> predicate) {
+        return (int) Arrays.stream(getInputLines())
+                .map(line -> Arrays.stream(line.split(" "))
                         .mapToInt(Integer::parseInt)
                         .toArray())
-                .filter(this::isValidPartTwo)
+                .filter(predicate)
                 .count();
     }
 
